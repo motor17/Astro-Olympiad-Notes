@@ -1,0 +1,449 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage{graphicx} 
+
+\title{ Celestial Mechanics and Orbital Mechanics}
+\author{Aadvik Mohta}
+\date{Dunman High School}
+
+\begin{document}
+
+\maketitle
+
+\section{Elliptical Orbits}
+Kepler's First Law: A planet orbits the sun in an ellipse, with the sun at one focus of the ellipse.
+\\
+Kepler's Second Law: A line connecting a planet to the sun sweeps out equal areas in equal time intervals. Alternatively, the orbital speed of a planet depends on its location in the orbit.
+\\
+Kepler's Third Law: The Harmonic Law. If $P$ is the orbital period of the planet in years and $a$ is the average distance of the planet from the sun in AU, then we have $$P^2=a^3$$
+\\
+To appreciate Kepler's Laws, one must first understand the geometry of an ellipse. An ellipse is defined as the set of points that satisfy the equation $$r+r'=2a$$
+\begin{figure}
+    \centering
+    \includegraphics[width=0.5\linewidth]{Screenshot 2025-03-26 233154.png}
+    \caption{Diagram of an Ellipse, Credit: Carroll and Ostlie}
+    \label{fig:1}
+\end{figure}
+According to Kepler's First Law, the planet orbits the sun in an ellipse, with the sun at the principal focus F. The distance $a$ is defined to be the semimajor axis while $b$ is the semiminor axis, and $e$ is the eccentricity of the ellipse. The point closest to F is perihelion, while the point farthest from F is aphelion.
+\\
+To find an equation that gives the eccentricity of an ellipse, consider the case where $r'=r$, as in the point on the ellipse is on either end of the semiminor axis. Then $r=r'=a$ and we can use the Pythagorean Theorem to give us:
+$$r^2=(ae)^2+b^2$$
+$$a^2=a^2e^2+b^2$$
+$$\therefore a^2(1-e^2)=b^2$$
+In Kepler's Second Law, describing the orbital behaviour of a planet entails specifying its position vector and velocity vector. It is therefore most convenient to express the planet's coordinates in polar form, indicating the distance $r$ from the principal focus in terms of an angle $\theta$. Using the Pythagorean Theorem,
+$$r'^2=r^2\sin^2{\theta}+(2ae+r\cos\theta)^2 $$
+which simplifies to 
+$$r'^2=r^2+4ae(ae+r\cos\theta)$$
+using the definition of an ellipse, $r+r'=2a$, we find that
+$$r=\frac{a(1-e^2)}{1+e\cos\theta}$$
+which is the polar equation of an ellipse.
+This leaves us with another question: what is the total area of an ellipse? To solve this, consider a point $(x,y)$ on an ellipse. Using the parametric equations of an ellipse$x=a\cos\theta, y=b\sin\theta$, as wel some symmetry, we arrive at the area integral in Cartesian coordinates.
+$$A=4\int_{0}^{a}y d{x}$$
+which after substituting in the parametric equations, becomes
+$$A=\int_{\pi/2}^{0}4ab(-\sin^2\theta)d\theta$$
+$$A=4ab\int_{0}^{\pi/2}\sin^2\theta d\theta$$
+$$A=4ab\int_{0}^{\pi/2}(0.5-0.5\cos2\theta)d\theta$$
+$$A=\int_{0}^{\pi/2}(2ab)d\theta-2ab\int_{0}^{\pi/2}(\cos2\theta )d\theta$$
+$$A=2ab[\theta]_{0}^{\pi/2}=\pi ab$$
+which leaves us with the area of the ellipse being $\pi ab$ units$^2$.
+
+\section{Newtonian Mechanics}
+Newton's First Law: A body at rest will remain at rest and a body in motion will remain in motion at a constant speed in a straight line, unless acted upon by a net force. In terms of the momentum of an object, we may alternatively state Newton's First Law of Motion as being that the momentum $\textbf{p}=m\textbf{v}$ of an object remains constant unless it experiences a net force.
+\\
+Newton's Second Law: The net force acting on an object is proportional to the object's mass and its resultant acceleration. If an object is experiencing $n$ forces, then Newton's Second Law for the object can be stated as
+$$\textbf{F}_{net}=\sum_{i=1}^{n}\textbf{F}_{i}=m\textbf{a}$$
+However, assuming constant mass allows us to express Newton's Second Law in a different way
+$$\textbf{F}_{net}=m\frac{d\textbf{v}}{dt}=\frac{d(m\textbf{v})}{dt}=\frac{d\textbf{p}}{dt}$$
+\\
+Newton's Third Law: Every action has an equal and opposite reaction. Mathematically, if we consider bodies A and B in the context of Newton's Third Law, we have
+$$\textbf{F}_{AB}=-\textbf{F}_{BA}$$
+In words, this states that if A exerts some force on B, then B exerts a force of equal magnitude and opposite direction on A. 
+\\
+\\
+\\
+Newton's Law of Universal Gravitation: Consider the case of circular orbital motion of a planet of mass $m$ about a much more massive mass $M$, such that we can assume $M>>m$. Using units other than years and astronomical units, we can write Kepler's Third Law in the form
+$$P^2=kr^3$$
+where $r$ is the distance between the two objects and $k$ is a constant of proportionality. The period of the planet can be taken to be
+$$P=\frac{\text{Circumference of Orbit}}{\text{Orbital Speed}}=\frac{2\pi r}{v}$$
+Substituting into the form of Kepler's Third Law just discussed above,
+$$\frac{4\pi ^2r^2}{v^2}=kr^3$$
+Rearranging terms, we get
+$$\frac{v^2}{r}=\frac{4\pi^2}{kr^2}$$
+Multiplying throughout by $m$,
+$$m\frac{v^2}{r}=\frac{4m\pi^2}{kr^2}$$
+Note that the left hand side of the equation is the centripetal force, so the gravitational force keeping $m$ in its orbit about $M$ should be
+$$F=\frac{4m\pi^2}{kr^2}$$
+But Newton's Third Law holds too, so the force exerted by $m$ on $M$ should be equal to the gravitational force exerted by $M$ on $m$.
+$$F=\frac{4M\pi^2}{k'r^2}$$
+If we let $k=\frac{k''}{M}$ and $k'=\frac{k''}{m}$, we get the equation
+$$F=\frac{4\pi^2Mm}{k''r^2}$$
+Allowing $G=\frac{4\pi^2}{k''}$ allows us to obtain the familiar form of Newton's Law of Universal Gravitation.
+$$F=G\frac{Mm}{r^2}$$
+where $G$ is the universal gravitational constant.
+\\
+\\
+Work Done and Energy: Let $\textbf{F}$ be the force vector, $\textbf{r}_i$ and $\textbf{r}_f$ be the initial and final position vectors, and $d\textbf{r}$ be the infinitesimal change in the position vector for some general coordinate system. Then, in general, the change in potential energy resulting in a change of position between the two points is 
+$$U_f-U_i=\Delta U=-\int_{\textbf{r}_i}^{\textbf{r}_f}\textbf{F}\cdot d\textbf{r}$$
+If the gravitational force on $m$ is due to a mass $M$ located at the origin, then $\textbf{F}$ is directed inward toward $M$ while $d\textbf{r}$ is directed outward, so $\textbf{F}\cdot d\textbf{r}=-Fdr$. The change in gravitational potential energy becomes 
+$$\Delta U=U_f-U_i=-GMm(\frac{1}{r_f}-\frac{1}{r_i})$$
+Letting $r_f\rightarrow\infty$ gives $U_f\rightarrow0$, which gives (after dropping subscripts):
+$$U=-G\frac{Mm}{r}$$
+The kinetic energy $E_k$ of an object is given by the formula
+$$E_k=\frac{1}{2}mv^2$$
+Knowledge of the expressions of both the kinetic energy and gravitational potential energy allows us to derive an expression for the escape speed of an object in orbit. We first define the total mechanical energy $M$ of the object as the sum of its kinetic energy and gravitational potential energy.
+$$E_{mechanical}=E_k+E_g=\frac{1}{2}mv^2-G\frac{Mm}{r}$$
+Assume that the final velocity of the object is zero, and that it is infinitely far away from the central mass $M$. Therefore, we consider the final potential energy and kinetic energy to both be zero, so by the Principle of Conservation of Energy
+$$E_{mechanical}=E_k+E_g=\frac{1}{2}mv^2-G\frac{Mm}{r}=0$$
+which can be solved to obtain the escape speed
+$$v=\sqrt{\frac{2GM}{r}}$$
+\section{The Centre-Of-Mass Reference Frame}
+In the case of the $n$-body problem, such as binary orbits($n=2$), it is useful to consider the problem in the reference frame of the centre of mass of the system. Consider 2 objects of masses $m_1$ and $m_2$ with position vectors $\textbf{r}'_1$ and $\textbf{r}'_2$ respectively. The displacement vector from the first object to the second one is given by 
+$$\textbf{r}=\textbf{r}'_2-\textbf{r}'_1$$
+The position vector of the centre of mass of the system is 
+$$\textbf{R}=\frac{m_1\textbf{r}'_1+m_2\textbf{r}'_2}{m_1+m_2}$$
+This expression can be generalised for $n$ bodies, giving
+$$\textbf{R}=\frac{\sum_{i=1}^nm_i\textbf{r}'_i}{\sum_{i=1}^nm_i}$$
+Rewriting the expression, 
+$$\sum_{i=1}^nm_i\textbf{R}=\sum_{i=1}^nm_i\textbf{r}'_i$$
+Defining the total mass of the system to be $\sum_{i=1}^nm_i=M$, we obtain
+$$M\textbf{R}=\sum_{i=1}^nm_i\textbf{r}'_i$$
+Assuming individual masses remain constant, and differentiating both sides with respect to time, 
+$$M\frac{d\textbf{R}}{dt}=\sum_{i=1}^nm_i\frac{d\textbf{r}'_i}{dt}$$
+which is basically
+$$M\textbf{V}=\sum_{i=1}^nm_i\textbf{v}'_i$$
+which further simplifies to 
+$$\textbf{P}=\sum_{i=1}^n\textbf{p}'_i$$
+Differentiating with respect to time again, 
+$$\frac{d\textbf{P}}{dt}=\sum_{i=1}^n\frac{d\textbf{p}'_i}{dt}$$
+Assuming all forces acting on the particles are because of other particles themselves, Newton's Third Law necessitates that the total force of the system must be zero. This means that
+$$F=\frac{d\textbf{P}}{dt}=M\frac{d^2\textbf{R}}{dt^2}=0$$
+Therefore the centre of mass does not accelerate if no external forces exist. The centre of mass is therefore an inertial reference frame and we can simplify the $N$-body problem by choosing a coordinate system where $\textbf{R}=0$. This means that, in general, for the $n$-body problem, 
+$$\textbf{R}=\frac{\sum_{i=1}^nm_i\textbf{r}'_i}{\sum_{i=1}^nm_i}=0$$
+As an example, consider the 2-body problem. Here, we have
+$$\frac{m_1\textbf{r}_1+m_2\textbf{r}_2}{m_1+m_2}=0$$
+Using $\textbf{r}=\textbf{r}_2-\textbf{r}_1$, 
+$$\textbf{r}_1=-\frac{m_2}{m_1+m_2}\textbf{r},,,,\textbf{r}_2=\frac{m_1}{m_1+m_2}\textbf{r}$$
+Define the reduced mass $\mu$ to be 
+$$\mu=\frac{m_1m_2}{m_1+m_2}$$
+which means we can rewrite the position vectors of $m_1$ and $m_2$ as 
+$$\textbf{r}_1=-\frac{\mu}{m_1}\textbf{r},,,,\textbf{r}_2=\frac{\mu}{m_2}\textbf{r}$$
+\\
+\\
+\subsubsection{Total Energy using COM Reference Frame}
+The total energy may be expressed as 
+$$E=\frac{1}{2}m_1|\textbf{v}_1|^2+\frac{1}{2}m_2|\textbf{v}_2|^2-G\frac{m_1m_2}{|\textbf{r}_2-\textbf{r}_1|}$$
+which can be rewritten as
+$$E=\frac{1}{2}\mu v^2-G\frac{M\mu}{r}$$
+The total energy of the system is equal to the mechanical energy of the reduced mass. Also, the distance between $\mu$ and $M$ is equal to the separation between $m_1$ and $m_2$
+\subsubsection{Angular Momentum using COM Reference Frame}
+Angular momentum in an orbit is defined by the equation 
+$$\textbf{L}=\textbf{r}\times\textbf{p}$$
+The total orbital angular momentum is therefore
+$$\textbf{L}=m_1\textbf{r}_1\times\textbf{v}_1+m_2\textbf{r}_2\times\textbf{v}_2$$
+which can be rewritten as 
+$$\textbf{L}=\mu \textbf{r}\times\textbf{v}=\textbf{r}\times\textbf{p}$$
+where $\textbf{p}=\mu \textbf{v}$
+The total orbital angular momentum equals the angular momentum of the reduced mass $\mu$ only. In general, we may treat the $2$-body problem as an equivalent one-body problem with the reduced mass $\mu$ orbiting around a fixed mass $M$, at a distance $r$.
+\section{Deriving Kepler's First Law}
+Using COM coordinates, the orbital angular momentum of the reduced mass is
+$$\textbf{L}=\textbf{r}\times\textbf{p}$$
+Differentiating with respect to time,
+$$\frac{d\textbf{L}}{dt}=\frac{d\textbf{r}}{dt}\times\textbf{p}+\textbf{r}\times\frac{d\textbf{p}}{dt}=\textbf{v}\times\textbf{p}+\textbf{r}\times\textbf{F}$$
+Because $\textbf{v}$ and $\textbf{p}$ are in the same direction, $\textbf{v}\times\textbf{p}=\textbf{0}$. Also, since $\textbf{F}$ is a central force directed inward along $\textbf{r}$, $\textbf{r}\times\textbf{F}=\textbf{0}$. These mean that we get the result
+$$\frac{d\textbf{L}}{dt}=0$$
+which is that the angular momentum of a system is constant for a central force law. The orbit of the reduced mass lies in a plane perpendicular to $\textbf{L}$, the equation for angular momentum in an orbit. We then proceed by considering a radial unit vector such that $\bm{\hat{r}}$. Note that
+$$\textbf{r}=r\bm{\hat{r}}$$
+This allows us to write the angular momentum vector as 
+$$\textbf{L}=\textbf{r}\times\textbf{p}=\mu \textbf{r}\times\textbf{v}=\mu r \bm{\hat{r}}\times\frac{d}{dt}(r\bm{\hat{r}})$$
+$$\textbf{L}=\mu r
+\bm{\hat{r}}\times(\frac{dr}{dt}\bm{\hat{r}}+r\frac{d}{dt}\bm{\hat{r}})=\mu r^2\bm{\hat{r}}\times\frac{d}{dt}\bm{\hat{r}}$$
+The acceleration of the reduced mass due to the gravitational force of ${M}$ is given by
+$$\textbf{a}=-\frac{GM}{r^2}\bm{\hat{r}}$$
+Then, taking the cross product of the acceleration and angular momentum of the reduced mass, 
+$$\textbf{a}\times\textbf{L}=-\frac{GM}{r^2}\bm{\hat{r}}\times(\mu r^2\bm{\hat{r}}\times\frac{d}{dt}\bm{\hat{r}})=-GM\mu (\bm{\hat{r}}\cdot\frac{d}{dt}\bm{\hat{r}})\bm{\hat{r}}+GM\mu (\bm{\hat{r}}\cdot\bm{\hat{r}})\frac{d}{dt}\bm{\hat{r}}$$
+We are able to do this because of the vector triple product, which is
+$$\textbf{A}\times(\textbf{B}\times\textbf{C})=(\textbf{A}\cdot\textbf{C})\textbf{B}-(\textbf{A}\cdot\textbf{B})\textbf{C}$$
+Also, note that as $\bm{\hat{r}}$ is a unit vector, $\bm{\hat{r}}\cdot\bm{\hat{r}}=1$. Furthermore,
+$$\frac{d}{dt}(\bm{\hat{r}}\cdot\bm{\hat{r}})=2\bm{\hat{r}}\cdot\frac{d}{dt}\bm{\hat{r}}=0$$
+This leads us to 
+$$\textbf{a}\times\textbf{L}=GM\mu \frac{d}{dt}\bm{\hat{r}}$$
+which can be rewritten as 
+$$\frac{d}{dt}(\textbf{v}\times\textbf{L})=\frac{d}{dt}(GM\mu \bm{\hat{r}})$$
+Integrating with respect to time, 
+$$\textbf{v}\times\textbf{L}=GM\mu \bm{\hat{r}}+\textbf{D}$$
+where $\textbf{D}$ is a constant vector. The magnitude of the LHS is largest when the at perihelion where the reduced mass has largest velocity. The magnitude of the RHS is greatest when $\bm{\hat{r}}$ and $\textbf{D}$ point in the same direction. These two clues tell us that $\textbf{D}$ is directed towards the perihelion. Taking the dot product of $\textbf{r}=r\bm{\hat{r}}$ and $\textbf{v}\times\textbf{L}$, 
+$$\textbf{r}\cdot(\textbf{v}\times\textbf{L})=GM\mu r\bm{\hat{r}}\cdot\bm{\hat{r}}+\textbf{r}\cdot\textbf{D}$$
+Using the vector identity,
+$$\textbf{A}\cdot(\textbf{B}\times\textbf{C})=(\textbf{A}\times\textbf{B})\cdot\textbf{C}$$
+we get 
+$$(\textbf{r}\times\textbf{v})\cdot\textbf{L}=GM\mu r+rD\cos{\theta}$$
+recall that $\textbf{L}=\textbf{r}\times\textbf{p}=\mu \textbf{r}\times\textbf{v}$, so
+$$\frac{L^2}{\mu}=GM\mu r\Bigg(1+\frac{D\cos{\theta}}{GM\mu}\Bigg)$$
+Let $e=\frac{D}{GM\mu}$. Then, making $r$ the subject of the equation, we obtain
+$$r=\frac{L^2/\mu ^2}{GM(1+e\cos{\theta})}$$
+which is the equation of a conic section. The path of the reduced mass around the centre of the mass under the influence of an attractive force is a conic section. For bound planetary orbits, this can be stated as the idea that both objects in a binary orbit move about the centre of mass in ellipses, with the centre of mass occupying one focus of each ellipse.
+\\
+\textbf{Note}: For a bound orbit, the total energy is less than zero. For a parabolic orbit, the total energy is exactly zero, and for a hyperbolic orbit the total energy is greater than zero.
+\\
+For a closed planetary orbit, it can be shown that the total orbital angular momentum of the system is 
+$$L=\mu \sqrt{GMa(1-e^2)}$$
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\section{Deriving Kepler's Second Law}
+Kepler's Second Law relates the area of a section of an ellipse to a time interval.
+\begin{figure}
+    \centering
+    \includegraphics[width=0.5\linewidth]{Screenshot 2025-04-02 130258.png}
+    \caption{The Infinitesimal Area in Polar Coordinates}
+    \label{fig:2}
+\end{figure}
+$$dA=dr(rd\theta)=rdrd\theta$$
+Integrating from the principle focus of the ellipse to some length $r$, 
+$$dA=\frac{1}2{r^2}d\theta$$
+Differentiating with respect to time, 
+$$\frac{dA}{dt}=\frac{1}{2}r^2\frac{d\theta}{dt}$$
+The orbital velocity $\textbf{v}$ may be expressed in terms of a component along $\textbf{r}$ and a component perpendicular to $\textbf{r}$. Therefore,
+$$\textbf{v}=\textbf{v}_r+\textbf{v}_\theta=\frac{dr}{dt}\bm{\hat{r}}+\frac{d\theta}{dt}\bm{\hat{\theta}}$$
+Evidently, we may use $\textbf{v}_\theta$. Note that
+$$v_\theta=r\frac{d\theta}{dt}$$
+and this expression can be used as a substitution,
+$$\frac{dA}{dt}=\frac{1}{2}r^2\frac{d\theta}{dt}=\frac{1}{2}r(r\frac{d\theta}{dt})=\frac{1}{2}rv_\theta$$
+Also, note that 
+$$|\textbf{r}\times\textbf{v}|=\Bigg|\textbf{r}\times\Bigg(\frac{dr}{dt}\bm{\hat{r}}+\frac{d\theta}{dt}\bm{\hat{\theta}}\Bigg)\Bigg|=|\textbf{r}\times\textbf{v}_\theta|=rv_\theta$$
+Furthermore, 
+$$|\textbf{r}\times\textbf{v}|=\Bigg|\frac{\textbf{L}}{\mu}\Bigg|=\frac{L}{\mu}$$
+Therefore, the time derivative of the area becomes
+$$\frac{dA}{dt}=\frac{1}{2}rv_\theta=\frac{1}{2}\frac{L}{\mu}$$
+which is a constant. This is Kepler's Second Law, which is that the time rate of change of area swept out by the line connecting a planet to a focus is a constant.
+\section{Deriving Kepler's Third Law}
+From Kepler's Second Law, 
+$$\frac{dA}{dt}=\frac{1}{2}\frac{L}{\mu}$$
+Integrating with respect to time over one orbital period P,
+$$A=\frac{LP}{2\mu}$$
+Since $A=\pi ab$, substitution gives
+$$\pi ab=\frac{LP}{2\mu}$$
+Squaring both sides,
+$$\pi^2a^2b^2=\frac{L^2P^2}{4\mu^2}$$
+Making $P^2$ the subject of the equation,
+$$P^2=\frac{4\mu^2\pi^2a^2b^2}{L^2}$$
+$$P^2=\frac{4\mu^2\pi^2a^2b^2}{\mu^2GMa(1-e^2)}=\frac{4\mu^2\pi^2a^2b^2}{\mu^2GM(\frac{b^2}{a})}=\frac{4\pi^2a^3}{GM}$$
+Since $M=m_1+m_2$, we conclude with
+$$P^2=\frac{4\pi^2}{G(m_1+m_2)}a^3$$
+which is the general form of Kepler's Third Law.
+\newpage
+\section{The Vis-Viva Equation}
+At the aphelion and perihelion, note that $\textbf{r}$ and $\textbf{v}$ are perpendicular vectors. Using the equation for orbital angular momentum,
+$$\textbf{L}=\textbf{r}\times\textbf{p}=\mu\textbf{r}\times\textbf{v}=\mu|\textbf{r}||\textbf{v}|\sin{\theta}\bm{\hat{n}}$$
+Where $\bm{\hat{n}}$ is the direction vector obtained through the vector cross product. The magnitude of the angular momentum at the aphelion and perihelion becomes
+$$L=\mu rv$$
+Note that the general form of Kepler's First Law is that
+$$r=\frac{L^2/\mu^2}{GM(1+e\cos{\theta})}$$
+At the perihelion, 
+$$L_p=\mu r_pv_p$$
+$$r_p=\frac{L_p^2/\mu^2}{GM(1+e\cos{\theta})}=\frac{(\mu^2r_p^2v_p^2)/\mu^2}{GM(1+e\cos{\theta})}$$
+$$\implies r_p=\frac{r_p^2v_p^2}{GM(1+e\cos{\theta})}$$
+$$\implies v_p^2=\frac{GM(1+e\cos{\theta})}{r_p}$$
+Since $r_p=a-ae=a(1-e)$, and $\theta=0$ at the perihelion,
+$$v_p^2=\frac{GM(1+e\cos{\theta})}{a(1-e)}=\frac{GM(1+e)}{a(1-e)}$$
+At the aphelion,
+$$L_a=\mu r_av_a$$
+$$r_a=\frac{L_a^2/\mu^2}{GM(1+e\cos{\theta})}=\frac{(\mu^2r_a^2v_a^2)/\mu^2}{GM(1+e\cos{\theta})}$$
+$$\implies r_a=\frac{r_a^2v_a^2}{GM(1+e\cos{\theta})}$$
+$$\implies v_a^2=\frac{GM(1+e\cos{\theta})}{r_a}$$
+Since $r_a=a+ae=a(1+e)$, and $\theta=\pi$ at the aphelion,
+$$v_a^2=\frac{GM(1+e\cos{\theta})}{a(1+e)}=\frac{GM(1-e)}{a(1+e)}$$
+The total orbital energy of the reduced mass is
+$$E=\frac{1}{2}\mu v_p^2-G\frac{M\mu}{r_p}=\frac{GM\mu(1+e)}{2a(1-e)}-\frac{GM\mu}{a(1-e)}$$
+$$E=\frac{GM\mu (1+e)}{2a(1-e)}-\frac{2GM\mu}{2a(1-e)}=\frac{eGM\mu-GM\mu}{2a(1-e)}=-\frac{GM\mu(1-e)}{2a(1-e)}=-\frac{GM\mu}{2a}$$
+Using $M=m_1+m_2$ and $\mu=\frac{m_1m_2}{m_1+m_2}$,
+$$E=-\frac{GM\mu}{2a}=-G\frac{(m_1+m_2)(\frac{m_1m_2}{m_1+m_2})}{2a}=-G\frac{m_1m_2}{2a}$$
+The aim of this section is to find an equation for the velocity of the reduced mass (the relative velocity of $m_1$ and $m_2$) for some value of $r$. Using conservation of energy,
+$$\text{Total Orbital Energy}=\text{Kinetic Energy}+\text{Potential Energy}$$
+$$-\frac{GM\mu}{2a}=\frac{1}{2}\mu v^2-\frac{GM\mu}{r}$$
+$$\implies\frac{1}{2}\mu v^2=\frac{GM\mu}{r}-\frac{GM\mu}{2a}$$
+$$\implies \frac{1}{2}v^2=\frac{GM}{r}-\frac{GM}{2a}=GM\Bigg(\frac{1}{r}-\frac{1}{2a}\Bigg)$$
+$$\therefore v^2=GM\Bigg(\frac{2}{r}-\frac{1}{a}\Bigg)$$
+This is the Vis-Viva equation.
+\section{The Virial Theorem}
+Note that the average distance of the reduced mass from the fixed mass is the semimajor axis $a$. Therefore, considering the time-averaged potential energy,
+$$\Big<U\Big>=-\frac{GM\mu}{a}$$
+$$\Big<E\Big>=-\frac{GM\mu}{2a}$$
+$$\implies \Big<E\Big>=\frac{1}{2}\Big<U\Big>$$
+Alternatively, consider
+$$\Big<E\Big>=\Big<K\Big>+\Big<U\Big>$$
+$$\implies-\frac{1}{2}\Big<U\Big>=\Big<K\Big>$$
+$$\therefore\Big<U\Big>=-2\Big<K\Big>$$
+These are 2 formulations of the virial theorem.
+\section{The Hohmann Transfer Orbit}
+\begin{figure}
+    \centering
+    \includegraphics[width=0.5\linewidth]{Screenshot 2025-04-03 073617.png}
+    \caption{The Hohmann Transfer}
+    \label{fig:3}
+\end{figure}
+Dr.Walter Hohmann showed that in practice, the most economical transfer between circular, coplanar orbits was an elliptical orbit co-tangential to inner and outer orbits at perihelion and aphelion respectively. Only one half of the transfer orbit is used.
+\\
+At A, the rocket engine is fired to produce a velocity increment $\Delta V_A$. The vehicle coasts about the half-ellipse APB, reaching aphelion at B. A second impulse produces a second velocity increment $\Delta V_B$. The rocket then enters a circular orbit of radius $a_2$ AU.
+\subsubsection{The Geometry of the Transfer Orbit}
+The transfer orbit is an ellipse. To find the semi-major axis $\alpha$ of the transfer orbit, consider the diagram above.
+$$\text{AB}=2\alpha=a_1+a_2$$
+Hence
+$$\alpha=\frac{a_1+a_2}{2}$$
+As for the eccentricity of the transfer orbit, consider
+$$\text{SA}=a_1=\alpha(1-e)$$
+$$\text{SB}=a_2=\alpha(1+e)$$
+Hence
+$$e=\frac{a_2-a_1}{a_2+a_1}$$
+\subsubsection{The Time Spent in the Transfer Orbit}
+First, we will find an expression for the period of revolution of a planet in its orbit. Suppose the orbit is circular. Then $r=a$. Substituting this into the vis-viva equation,
+$$v^2=\frac{GM}{a}$$
+Define the gravitational parameter $\mu$(not related to the reduced mass) to be $GM$, where $M=m_1+m_2$ Then
+$$v^2=\frac{\mu}{a}$$
+But 
+$$v=\frac{2\pi a}{T}$$
+So
+$$T=2\pi\Bigg(\frac{a^3}{\mu}\Bigg)^{1/2}$$
+This holds for elliptical orbits in general.
+\\
+Let the time spent in the transfer orbit be $\tau$. This is the time interval spent in motion from A to B. For an elliptical orbit, the orbital period is 
+$$T=2\pi \Bigg(\frac{a^3}{\mu}\Bigg)^{1/2}$$
+Then since the transfer orbit is essentially half an elliptical orbit,
+$$\tau=\pi\Bigg(\frac{a^3}{\mu}\Bigg)^{1/2}$$
+\subsubsection{The Velocity Increments}
+At A, the required velocity increment $\Delta V_A$ is the difference between circular velocity $v_{c1}$ in the inner orbit and the perihelion velocity $V_P$ in the transfer orbit. Note that this is basically
+$$\Delta V_A=\Bigg[\frac{\mu}{\alpha}\Bigg(\frac{1+e}{1-e}\Bigg)\Bigg]^{1/2}-\Bigg(\frac{\mu}{a_1}\Bigg)^{1/2}=\Bigg(\frac{\mu}{a_1}\Bigg)^{1/2}\Big[(1+e)^{1/2}-1\Big]$$
+Therefore
+$$\Delta V_A=\Bigg(\frac{\mu}{a_1}\Bigg)^{1/2}\Bigg[\Bigg(\frac{2a_2}{a_1+a_2}\Bigg)-1\Bigg]$$
+Then by similar argument, we have that
+$$\Delta V_B=\Bigg(\frac{\mu}{a_1}\Bigg)^{1/2}\Bigg[1-\Bigg(\frac{2a_1}{a_1+a_2}\Bigg)^{1/2}\Bigg]$$
+\section{The Roche Limit}
+\subsubsection{Tidal Forces}
+The differential force on a object due to its non-zero size is known as a tidal force. Consider a force on a test mass $m_1$ within the planet at a distance $r$ from the moon's centre of mass.
+$$F_m=\frac{GMm_1}{r^2}$$
+where $M$ is the mass of the moon. Consider a second mass $m_2=m_1=m$ located at a distance $dr$ from $m_1$ along a line connecting the planet and the moon. The differential force between the two masses is then
+$$dF_m=\Bigg(\frac{dF_m}{dr}\Bigg)dr=-2G\frac{Mm}{r^3}dr$$
+where $dr$ is taken to be the distance between their centres.
+\subsubsection{Deriving the Roche Limit}
+The Roche Limit is the maximum orbital radius for which tidal disruption occurs. Assume that this happens when the differential force exceeds the self-gravitational force holding the moon together. Also assume, for simplicity, that the moon and the planet are spherical and ignore any centrifugal effects. Therefore, the inward gravitational acceleration produced by the moon at a point located on its surface closest to the planet must be smaller than the outward differential gravitational acceleration produced by the planet. Mathematically, 
+$$\frac{GM_m}{R_m^2}<\frac{2GM_pR_m}{r^3}$$
+where $M_p$ and $M_m$ are the masses of the planet and the moon respectively, $R_m$ is the radius of the moon, and $r$ is the distance between the centres of the two bodies. Note that 
+$$M_p=\frac{4\pi R_p^3\rho_p}{3}$$
+and
+$$M_m=\frac{4\pi R_m^3\rho_m}{3}$$
+Through some algebraic manipulation, we get
+$$r<2^{1/3}\Bigg(\frac{\rho_p}{\rho_m}\Bigg)^{1/3}R_p$$
+This is the Roche Limit.
+\newpage
+\section{Newton's Shell Method}
+\subsubsection{Point Mass Outside a Uniform Spherical Shell}
+\begin{figure}
+    \centering
+    \includegraphics[width=0.5\linewidth]{Screenshot 2025-04-09 161612.png}
+    \caption{Shell go Brr}
+    \label{Fig:4}
+\end{figure}
+Consider Figure 4. Here, we consider a point of mass $m$ outside a uniform shell of mass $M$, radius $R$ and area $A$. Assume $m$ lies on the axis through the top and centre of the sphere, such that $r>R$. Consider rings of varying radius $R\sin{\phi}$, each of mass $dM$. Each ring is further broken up into smaller rings of mass $dm$ and area $(R\sin{\phi}\hspace{0.1cm}d\theta)(R\hspace{0.1cm}d\theta)$. Now, consider 
+$$dm=\frac{M}{A}\hspace{0.1cm}dA=\frac{M}{A}(R\sin{\phi}\hspace{0.1cm}d\theta)(R\hspace{0.1cm}d\phi)$$
+The gravitational potential energy of $m$ and $dm$ is 
+$$U=-G\frac{m(dm)}{s}=-\frac{Gm}{s}\Bigg(\frac{M}{A}\Bigg)(R\sin{\phi}\hspace{0.1cm}d\theta)(R\hspace{0.1cm}d\phi)$$
+Integrating $\theta$ over the circumference of the ring of radius $R\sin{\phi}$,
+$$dU_{ring}=-\frac{GMm}{As}(2\pi R\sin{\phi})(R\hspace{0.1cm}d\phi)$$
+Consider Figure 4. By the Cosine Rule, 
+$$s^2=r^2+R^2-2rR\cos{\phi}$$
+Differentiating both sides with respect to $\phi$,
+$$2s\frac{ds}{d\phi}=2rR\sin{\phi}$$
+$$s\hspace{0.1cm}ds=rR\sin{\phi}\hspace{0.1cm}d\phi$$
+$$\sin{\phi}\hspace{0.1cm}d\phi=\frac{s}{rR}\hspace{0.1cm}ds$$
+Substituting, we have
+$$dU_{ring}=-\frac{GMm}{As}(2\pi R^2)\Bigg(\frac{s}{rR}\hspace{0.1cm}ds\Bigg)=-\frac{GMm}{A}\Bigg(\frac{2\pi R}{r}\Bigg)\hspace{0.1cm}ds$$
+Since $A=4\pi R^2$,
+$$dU_{ring}=-\frac{GMm}{4\pi R^2}\Bigg(\frac{2\pi R}{r}\Bigg)\hspace{0.1cm}ds=-\frac{GMm}{2Rr}\hspace{0.1cm}ds$$
+To get the potential energy due to the whole shell,
+$$U=\int_{r-R}^{r+R}-\frac{GMm}{2Rr}\hspace{0.1cm}ds=-\frac{GMm}{r}$$
+For a conservative force, 
+$$F=-\frac{dU}{dr}$$
+Therefore the force on a point mass outside the shell is 
+$$F=-\frac{dU}{dr}=-G\frac{Mm}{r^2}$$
+where the negative sign denotes that the force is attractive in nature towards the shell.
+\subsubsection{Point Mass Inside a Uniform Spherical Shell}
+Here, we consider 
+$$dU_{ring}=-\frac{GMm}{2Rr}\hspace{0.1cm}ds$$
+and integrate from $(R-r)$ to $(R+r)$.
+$$U=\int_{R-r}^{R+r}-\frac{GMm}{2Rr}\hspace{0.1cm}ds=-\frac{GMm}{R}$$ 
+$$F=-\frac{dU}{dr}=0$$
+A mass inside a uniform shell does not experience a force due to that shell.
+\newpage
+\section{Orbit Analysis}
+\subsubsection{Effective Radial Potential}
+The mechanical energy of a satellite of mass $m$ in orbit around another mass $M$ is given by
+$$E=\frac{1}{2}mv^2-\frac{GMm}{r}$$
+Note that by Pythagoras' Theorem,
+$$v^2=v_r^2+v_p^2$$
+where $v_r$ is the radial component of the orbital velocity and $v_p$ is the component perpendicular to this radial component. Also, note that
+$$\bm{L}=\bm{r}\times\bm{p}$$
+$$L=mrv_p$$
+and 
+$$\dot r=\frac{dr}{dt}=v_r$$
+Then
+$$E=\frac{1}{2}mv_r^2+\frac{1}{2}mv_p^2-\frac{GMm}{r}=\frac{1}{2}m\dot r^2+\frac{1}{2}mv_p^2-\frac{GMm}{r}$$
+Also
+$$v_p=\frac{L}{mr}$$
+$$\implies v_p^2=\frac{L^2}{m^2r^2}$$
+Therefore
+$$E=\frac{1}{2}m\dot r^2+\frac{1}{2}mv_p^2-\frac{GMm}{r}=\frac{1}{2}m\dot r^2+\frac{m}{2}\Bigg(\frac{L^2}{m^2r^2}\Bigg)-\frac{GMm}{r}$$
+$$\therefore E=\frac{1}{2}m\dot r^2+\frac{L^2}{2mr^2}-\frac{GMm}{r}$$
+Rearranging our new equation for the mechanical energy of the satellite,
+$$\frac{1}{2}m\dot r^2=E-\frac{L^2}{2mr^2}+\frac{GMm}{r}$$
+$$\frac{1}{2}m\dot r^2=E-U_{eff}(r)$$
+$$U_{eff}(r)=\frac{L^2}{2mr^2}-\frac{GMm}{r}$$ 
+where $U_{eff}(r)$ is the effective radial potential.
+\newpage
+\begin{figure}
+    \centering
+    \includegraphics[width=0.5\linewidth]{Screenshot 2025-04-12 002116.png}
+    \caption{Graph of Radial Potential vs. r  of Various Orbits}
+    \label{fig:5}
+\end{figure}
+Note that the total mechanical energy may be expressed as
+$$E=K_{eff}+U_{eff}=\frac{1}{2}m\dot r^2+\frac{L^2}{2mr^2}-\frac{GMm}{r}$$
+Whenever the effective kinetic energy is zero, the total mechanical energy is equal to the effective potential energy.
+\subsubsection{Circular Orbits}
+The lowest energy state $E_{min}$ corresponds to the minimum of the effective radial potential. Set
+$$\frac{dU_{eff}}{dr}=-\frac{L^2}{mr^3}+\frac{GMm}{r^2}=0$$
+Then solving for $r=r_0$ gives
+$$r_o=\frac{L^2}{GMm^2}$$
+for a circular orbit, the distance between $m$ and $M$ does not change.
+\subsubsection{Elliptical Orbits}
+At aphelion and perihelion, $\dot r=0$.  Therefore $E=U_{eff}$. The total energy of the orbit is such that
+$$E_{min}<E<0$$
+Elliptical orbits have been studied in depth in previous sections.
+\subsubsection{Parabolic Orbits}
+The total energy of a parabolic orbit is 0. As $r\rightarrow \infty$, $U_{eff}\rightarrow0$ and $K_{eff}\rightarrow0$. At any point in the orbit, the object is moving at some speed $v_E$, which is the object's escape speed at that point in the orbit. A parabolic orbit is unbound, and has a distance of closest approach to the central body. This distance of closest approach can be derived as follows. Consider the condition
+$$U_{eff}=\frac{L^2}{2mr^2}-\frac{GMm}{r}=0$$
+The distance of closest approach is therefore 
+$$r=\frac{L^2}{2GMm^2}$$
+\subsubsection{Hyperbolic Orbits}
+A hyperbolic is an unbound orbit whose total energy $E>0$. This means that as $r\rightarrow \infty$, $K_{eff}>0$.
+\\
+A hyperbolic orbit has one turning point. At this turning point, $\dot r=0$ and the total energy of the object is the effective radial potential. Therefore, to find the distance of closest approach for a hyperbolic orbit, we consider
+$$E=U_{eff}=\frac{L^2}{2mr^2}-\frac{GMm}{r}$$
+After making the closest approach, ye olde object moves out to infinity forever.
+\end{document}

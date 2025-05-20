@@ -1,0 +1,299 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{mathtools}
+\usepackage{asymptote}
+\usepackage{bm}
+\usepackage{siunitx}
+\usepackage{float}
+\usepackage[a4paper,left=3cm,right=3cm,top=2.5cm,bottom=2.5cm]{geometry}
+\usepackage[ntheorem]{mdframed}
+\usepackage[all]{tcolorbox}
+\usepackage{tikz}
+\usepackage{asymptote}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{mathtools,thmtools,framed}
+\usepackage{lipsum}
+\renewcommand{\familydefault}{\sfdefault}
+\theoremstyle{definition}
+
+\declaretheoremstyle[
+    headfont=\bfseries\sffamily\color{NavyBlue!70!black}, bodyfont=\normalfont,
+    mdframed={
+        linewidth=2pt,
+        rightline=false, topline=false, bottomline=false,
+        linecolor=NavyBlue, backgroundcolor=NavyBlue!5,
+    }
+]{thmnavybox}
+
+\declaretheoremstyle[
+    headfont=\bfseries\sffamily\color{Blue!70!black}, bodyfont=\normalfont,
+    mdframed={
+        linewidth=2pt,
+        rightline=false, topline=false, bottomline=false,
+        linecolor=Blue, backgroundcolor=Lavender!35,
+    }
+]{thmbluebox}
+
+\declaretheoremstyle[
+    headfont=\bfseries\sffamily\color{NavyBlue!70!black}, bodyfont=\normalfont,
+    mdframed={
+        linewidth=2pt,
+        rightline=false, topline=false, bottomline=false,
+        linecolor=NavyBlue
+    }
+]{thmblueline}
+
+\declaretheoremstyle[
+    headfont=\bfseries\sffamily\color{Turquoise!70!black}, bodyfont=\normalfont,
+    mdframed={
+        linewidth=2pt,
+        rightline=false, topline=false, bottomline=false,
+        linecolor=Turquoise, backgroundcolor=Turquoise!5,
+    }
+]{thmturquoisebox}
+
+\declaretheoremstyle[
+    headfont=\bfseries\sffamily\color{Maroon!95!black}, bodyfont=\normalfont,
+    numbered=no,
+    mdframed={
+        linewidth=2pt,
+        rightline=false, topline=false, bottomline=false,
+        linecolor=Maroon, backgroundcolor=Maroon!10,
+    },
+    qed=\qedsymbol
+]{thmproofbox}
+
+\declaretheoremstyle[
+    headfont=\bfseries\sffamily\color{Emerald!70!black}, bodyfont=\normalfont,
+    numbered=no,
+    mdframed={
+        linewidth=2pt,
+        rightline=false, topline=false, bottomline=false,
+        linecolor=Emerald, backgroundcolor=Emerald!10,
+    },
+]{thmexplanationbox}
+
+
+
+\declaretheorem[style=thmnavybox, name=Definition]{definition}
+\declaretheorem[style=thmbluebox, numbered=no, name=Example]{eg}
+\declaretheorem[style=thmturquoisebox, name=Proposition]{prop}
+\declaretheorem[style=thmturquoisebox, name=Theorem]{theorem}
+\declaretheorem[style=thmturquoisebox, name=Lemma]{lemma}
+\declaretheorem[style=thmturquoisebox, numbered=no, name=Corollary]{corollary}
+\declaretheorem[style=thmturquoisebox,
+name=Method]{method}
+
+\declaretheorem[style=thmproofbox, name=Proof]{replacementproof}
+\renewenvironment{proof}[1][\proofname]{\vspace{-10pt}\begin{replacementproof}}{\end{replacementproof}}
+
+
+\declaretheorem[style=thmexplanationbox, name=Proof]{tmpexplanation}
+\newenvironment{explanation}[1][]{\vspace{-10pt}\begin{tmpexplanation}}{\end{tmpexplanation}}
+
+\declaretheorem[style=thmblueline, numbered=no, name=Remark]{remark}
+\declaretheorem[style=thmblueline, numbered=no, name=Note]{note}
+
+
+
+
+
+\title{The Cosmic Distance Ladder}
+\author{A.M.}
+\date{May 2025}
+
+\begin{document}
+
+\maketitle
+
+\section{Important Units}
+\subsection{The Astronomical Unit}
+\begin{definition}
+    The \textbf{astronomical unit} is a unit of length derived from the earth's orbit, defined to be exactly $1\hspace{0.1cm}\text{AU}=1.49597870700\times10^{11}\text{m}$. 
+\end{definition}
+\begin{note}
+    The astronomical unit was historically conceived as the average Earth-Sun distance(the average of the Earth's aphelion and perihelion distances).
+\end{note}
+\subsection{The Light Year}
+\begin{definition}
+    The $\textbf{light year}$ is a unit of length defined to be the distance travelled by light through a vacuum in one Julian year i.e. $1 \hspace{0.1cm}\text{ly}=9.4605284\times 10^{15}\text{m}$
+\end{definition}
+\begin{note}
+    The $\textbf{light year}$ is often used in the context of non-specialist or popular science works. A more widely-used unit of length would be the $\textbf{parsec}$.
+\end{note}
+\subsection{The Parsec}
+\begin{definition}
+    The $\textbf{parsec}$ is a unit of length used to measure the large distances of astronomical objects outside the Solar System, defined to be $ 1\hspace{0.1cm}\text{pc}=3.26163344\hspace{0.1cm}\text{ly}$
+\end{definition}
+\begin{note}
+    The parsec unit is obtained by the use of parallax and trigonometry, and is defined as the distance at which $1\hspace{0.1cm}\text{AU}$ subtends an angle of $1''$.
+\end{note}
+\subsection{The arcsecond and arcminute}
+\begin{definition}
+    An $\textbf{arcsecond}$ is defined to be $\frac{1}{3600}$\textdegree.
+\end{definition}
+\begin{definition}
+    An $\textbf{arcminute}$ is defined to be $\frac{1}{60}$\textdegree.
+\end{definition}
+\section{An Overview of the Distance Ladder}
+The Cosmic Distance Ladder is a succession of methods by which astronomers determine the distances to celestial objects. In order from being used to observe objects closer to us to being used to observe objects far away from us, some methods forming the distance ladder are:\\
+Trigonometric Parallax $\rightarrow$ Stellar Parallax $\rightarrow$ Spectroscopic Parallax $\rightarrow$ Interstellar Masers $\rightarrow$ Standard Candles $\rightarrow$ Hubble's Law
+
+\section{Trigonometric Parallax}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{Screenshot 2025-05-17 180326.png}
+    \caption{Trigonometric Parallax}
+\end{figure}
+We owe the idea of trigonometric(and consequently stellar) parallax to the idea of triangulation in the field of surveying. Consider figure 1. From this, it is obvious that the distance $d$ to the point on the mountain can be found using simple trigonometry:
+$$\tan p=\frac{B}{d}$$
+$$\implies d=\frac{B}{\tan p}$$
+\section{Stellar Parallax}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{Screenshot 2025-05-17 182352.png}
+    \caption{Stellar Parallax}
+\end{figure}
+This method is basically just trigonometric parallax on a larger scale. Here, we set the distance between the Sun and Earth to be $1\hspace{0.1cm}\text{AU}$. Using simple trigonometry, we have:
+$$d=\frac{1\hspace{0.1cm}\text{AU}}{\tan p}$$
+Converting $p$ to $p''$, which is basically converting from radians to arcseconds, while also employing the small-angle approximation $\tan p\approx p$, we have
+$$d\approx \frac{206264.806}{p''}\text{AU.}$$
+Which allows us to define the parsec in a way such that we have
+$$d\approx\frac{1}{p''}\text{pc.}$$
+\newpage
+\section{Spectroscopic Parallax}
+Note that the precise "distance modulus" can be expressed as 
+$$m-M=5\log d-5+A(d)$$
+where $d$ is measured in parsecs and $A(d)$ is the correction term for extinction. The process for coming up with the specific equation for a certain body is as follows:
+
+\begin{itemize}
+    \item $m$ can be directly calculated from observation, but $M$ is much harder to find.
+    \item Take spectra of the star.
+    \item Types of spectral lines tell us the spectral class of the star.
+    \item Thickness of spectral lines tell us the luminosity class of the star.
+    \item We can then plot the star on a HR diagram, telling us its absolute magnitude.
+    \item We then use the general formula of the distance modulus to find the distance to the star.
+\end{itemize}
+\section{Standard Candles}
+\begin{definition}
+    A $\textbf{standard candle}$ is an astronomical object that works as a sort of standard reference. These are objects where the intrinsic luminosity of the object is known.
+\end{definition}
+\begin{note}
+    Comparing the luminosity of a standard candle with the apparent luminosity(how much light from the object reaches us), we get a measure of how far away the object is from us.
+\end{note}
+\begin{note}
+    Some common types of standard candles are Type Ia Supernovae, and Cepheid Variables.
+\end{note}
+\subsection{Cepheid Variables}
+\begin{definition}
+    Cepheid variables are a particular type of variable stars, whose brightness varies in a predictable and regular way due to the instability of their surface.
+\end{definition}
+\begin{note}
+    Even a small increase in pressure tends to expand the surface of the star and lower its temperature, making it appear fainter. In turn, the initial increase in volume causes a decrease in pressure, which then leads to the star undergoing compression, increasing its temperature, and therefore its brightness.
+\end{note}
+\begin{note}
+    One can model a Cepheid variable as a thermodynamic engine to explain how the periodic cycle sustains itself. The outer layers of the star become more opaque during the expansion phase, therefore absorbing more energy and being pushed outwards. During the compression phase, they become more opaque, absorbing less energy and being pushed inwards by gravity. This is the $\kappa$ mechanism.
+\end{note}
+\begin{theorem}
+    The calibrated period-luminosity relation for the V band is described by
+    $$M_{(V)}=-2.81\log_{10}P_d-1.43$$
+\end{theorem}
+\begin{theorem}
+    In terms of the average luminosity of the star, the period-luminosity relation is given by
+    $$\log_{10}\frac{\big<L\big>}{L_\odot}=1.15\log_{10}P_d+2.47$$
+\end{theorem}
+There are 3 common types of variable stars: Type I Cepheid variables, Type II Cepheid variables, and RR Lyrae stars. 
+\begin{note}
+    Type I Cepheid variables belong to younger population I stars, while Type II Cepheid variables belong to older population II stars that are usually poor in heavy metals and are thus fainter.
+\end{note}
+\begin{note}
+    Because Type I Cepheid variables are brighter, they can be used to measure longer distances than Type II Cepheid variables. RR Lyrae stars are fainter than both types of Cepheid variable stars.
+\end{note}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{Screenshot 2025-05-19 223907.png}
+    \caption{Period-Luminosity Relationship for Type I, Type II Cepheids and RR Lyrae}
+\end{figure}
+\subsection{Type Ia Supernovae}
+\begin{definition}
+Type I supernovae were identified first as those supernovae that do not exhibit any hydrogen lines in their spectra. Those Type I spectra that show a strong Si II line at $615\hspace{0.1cm}\text{nm}$ are called $\textbf{Type Ia}$
+\end{definition}
+\begin{note}
+    Type Ia supernovae are caused by exploding white dwarfs which have companion stars. The gravitational pull of the white dwarf causes it to take matter from its companion star, in a process called accretuon. Eventually, the mass of the white dwarf reaches a ceiling of about 1.44 Solar Masses, known as the Chandrasekhar Limit. At this mass limit, the white dwarf can no longer support itself against gravitational collapse and explodes. 
+\end{note}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{Screenshot 2025-05-18 223346.png}
+    \caption{Light Curve of a Type Ia Supernova}
+\end{figure}
+\begin{note}
+    Type Ia supernovae have blue and visual magnitudes of $\big<M_B\big>\approx\big<M_V\big>\approx -19.3\pm0.3$. If the peak magnitude of a Type Ia supernova can be determined, then its distance may be found as well.
+\end{note}
+\begin{note}
+    If we know the apparent magnitude of the supernova at peak brilliance, then we can use the distance modulus formula $d=10^{0.2(m-M-A+5)}$ to determine the distance to the supernova. Recall that here, A is the extinction term.
+\end{note}
+\section{Tully-Fisher Relation}
+This is an important result in determining the distance to a spiral galaxy. 
+\begin{note}
+    All spiral galaxies rotate about their centre. This rotation gives rise to a blueshifted spectrum in the part of the galaxy that is rotating towards the observer, and a redshifted spectrum that is rotating away from the observer .
+\end{note}
+We will now derive the Tully-Fisher relation. Consider the diagram below.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{Screenshot 2025-05-20 111002.png}
+\end{figure}
+Let $v_c$ be the radial velocity of the centre of the galaxy, $v_{rot}$ be the maximum velocity of the rotation of the stars around the centre and $i$ be the angle between the line of sight and the normal to the plane of the galaxy. To an observer on Earth, it appears that the extremities of the galaxy move with radial velocities of $v_1=v_c-v_{rot}\sin i$ and $v_2=v_c+v_{rot}\sin i$. The displacements in the spectral lines are given by 
+$$\frac{\Delta \lambda_1}{\lambda}=\frac{v_c-v_{rot}\sin i}{c}$$
+$$\frac{\Delta \lambda_2}{\lambda}=\frac{v_c+v_{rot}\sin i}{c}$$
+Subtracting the two equations and making $v_{rot}$ the subject of the equation, we obtain
+$$v_{rot}=\frac{c}{\lambda \sin i}(\Delta\lambda _2-\Delta\lambda_1)$$
+This equation allows us to find the rotational velocity of the galaxy from quantities readily measured on Earth. Now, note that as the galaxy rotates faster, the quantities $\Delta \lambda_1$ and $\Delta \lambda_2$ get bigger. The galaxy rotates because of the gravitational force acting on it. Therefore, the greater the mass of the galaxy, the greater its rotational velocity. This is encapsulated by the equation
+$$v_{rot}^2=\frac{GM}{R}$$
+We assume that the greater the mass of the galaxy, the more stars in it, and therefore the brighter the galaxy. Hence, galaxies rotating faster are brighter. Also, we assume that spiral galaxies are mostly comprised of sun-like stars. As such the luminosity-mass ratio must be a constant for all galaxies. Therefore the luminosity-mass ratio $C_{LM}=\frac{L}{M}=constant$. Then
+$$L=C_{LM}\frac{v_{rot}^2R}{G}$$
+\newpage
+Assuming all galaxies have approximately the same surface luminosity, we have surface luminosity $C_{LR}=\frac{L}{R^2}$. Therefore, 
+$$L=\frac{C_{LM}^2}{C_{LR}}\frac{v_{rot}^4}{G^2}$$
+$$C=\frac{C_{LM}^2}{C_{LR}G^2}$$
+$$\implies L=Cv_{rot}^4$$
+This is the Tully-Fisher Relation. An alternative form of this relation links the absolute magnitude and rotational velocity. Consider a reference galaxy with rotational velocity $v_{rot,0}$ and absolute magnitude $M_0$, we have 
+$$M=M_0-2.5\log \frac{L}{L_0}=M_0-2.5\log \frac{v_{rot}^4}{v_{rot,0}^4}=M_0-10\log \frac{v_{rot}}{v_{rot,0}}$$
+Hence, the Tully-Fisher relation can also be written as 
+$$M_1-M_2=-10\log \frac{v_{rot,1}}{v_{rot,2}}$$
+\begin{theorem}
+    The Tully-Fisher Relation can be written as 
+    $$L=Cv_{rot}^4$$
+    where 
+    $$C=\frac{C_{LM}^2}{C_{LR}G^2}$$
+\end{theorem}
+\begin{theorem}
+    An alternative form of the Tully-Fisher Relation is 
+    $$M_1-M_2=-10\log \frac{v_{rot,1}}{v_{rot,2}}$$
+\end{theorem}
+\begin{note}
+    The second form of the Tully-Fisher relation allows us to compute the absolute magnitude of a galaxy from the absolute magnitude of another galaxy and the ratio of their rotational velocities.
+\end{note}
+\begin{note}
+However, this equation can be made more accurate by using the equations for the absolute magnitude of each type of spiral galaxy. The three types of spiral galaxies are Sa, Sb and Sc. The absolute magnitude equations for each type of spiral galaxy are:
+$$M=-9.95\log_{10}v_{rot}+3.15\text{ for Sa galaxies}$$
+$$M=-10.2\log_{10}v_{rot}+2.71\text{ for Sb galaxies}$$
+$$M=-11.0\log_{10}v_{rot}+3.31\text{ for Sc galaxies}$$
+\end{note}
+\newpage
+\section{Hubble's Law}
+The universe is expanding. 
+\begin{definition}
+    $\textbf{Hubble's Law}$ states that galaxies are moving away from earth at speeds proportional to their distance away. Mathematically, this is 
+    $$v=H_0d$$
+    where $H_0$ is Hubble's Constant.
+\end{definition}
+\begin{note}
+    The distance to a given galaxy is proportional to the recessional velocity as measured by the Doppler redshift. The redshift of the spectral lines is commonly expressed in terms of the $z$-parameter, which is the fractional shift in spectral wavelength. The $z$-parameter is given by:
+    $$z=\frac{\Delta\lambda}{\lambda}=\frac{\sqrt{1+v/c}}{\sqrt{1-v/c}}-1=\frac{\sqrt{1+\frac{H_0d}{c}}}{\sqrt{1-\frac{H_0d}{c}}}-1$$
+\end{note}
+
+\end{document}
